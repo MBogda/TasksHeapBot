@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.7.10"
+    kotlin("jvm") version "1.8.10"
     application
 }
 
@@ -12,14 +12,23 @@ repositories {
     mavenCentral()
 }
 
+val tgbotapiVersion: String by project
 val jacksonVersion: String by project
+val exposedVersion: String by project
+val h2Version: String by project
 
 dependencies {
     testImplementation(kotlin("test"))
 
-    implementation("dev.inmo", "tgbotapi", "4.1.1")
+    implementation("dev.inmo", "tgbotapi", tgbotapiVersion)
+
     implementation("com.fasterxml.jackson.module", "jackson-module-kotlin", jacksonVersion)
     implementation("com.fasterxml.jackson.dataformat", "jackson-dataformat-yaml", jacksonVersion)
+
+    implementation("org.jetbrains.exposed", "exposed-core", exposedVersion)
+    implementation("org.jetbrains.exposed", "exposed-dao", exposedVersion)
+    implementation("org.jetbrains.exposed", "exposed-jdbc", exposedVersion)
+    implementation("com.h2database", "h2", h2Version)
 }
 
 tasks.test {
