@@ -1,5 +1,6 @@
-package tasksheapbot
+package bogdan.markov.tasksheapbot.tasksheapbot
 
+import bogdan.markov.tasksheapbot.Util.fullName
 import dev.inmo.tgbotapi.extensions.api.bot.getMe
 import dev.inmo.tgbotapi.extensions.api.send.reply
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
@@ -8,7 +9,6 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.onConten
 import dev.inmo.tgbotapi.extensions.utils.ifPrivateChat
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.content.TextContent
-import util.fullName
 
 class TasksHeapBot {
 

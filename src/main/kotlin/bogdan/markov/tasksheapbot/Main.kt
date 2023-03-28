@@ -1,11 +1,13 @@
+package bogdan.markov.tasksheapbot
+
+import bogdan.markov.tasksheapbot.taskentity.TasksTable
+import bogdan.markov.tasksheapbot.tasksheapbot.TasksHeapBot
 import dev.inmo.tgbotapi.extensions.api.telegramBot
 import dev.inmo.tgbotapi.extensions.behaviour_builder.buildBehaviourWithLongPolling
 import kotlinx.coroutines.runBlocking
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction
-import taskentity.TasksTable
-import tasksheapbot.TasksHeapBot
 
 val CONFIG = loadConfig("config.yaml")
 

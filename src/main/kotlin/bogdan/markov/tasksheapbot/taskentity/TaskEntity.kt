@@ -1,4 +1,4 @@
-package taskentity
+package bogdan.markov.tasksheapbot.taskentity
 
 import org.jetbrains.exposed.dao.LongEntity
 import org.jetbrains.exposed.dao.LongEntityClass

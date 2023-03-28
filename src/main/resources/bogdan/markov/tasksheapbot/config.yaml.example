@@ -3,4 +3,4 @@ application:
 database:
   path: ./tasksheap_data
   user: root
-  password: <database password here; can be empty string "">
+  password: <database password here; can be an empty string "">
