@@ -1,2 +1,6 @@
 application:
   botApiToken: <telegram bot token here>
+database:
+  path: ./tasksheap_data
+  user: root
+  password: <database password here; can be empty string "">

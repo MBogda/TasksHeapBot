@@ -3,11 +3,18 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 
 data class Config(
-    val application: ApplicationConfig
+    val application: ApplicationConfig,
+    val database: DatabaseConfig,
 )
 
 data class ApplicationConfig(
-    val botApiToken: String
+    val botApiToken: String,
+)
+
+data class DatabaseConfig(
+    val path: String,
+    val user: String,
+    val password: String,
 )
 
 fun loadConfig(configFile: String): Config {
