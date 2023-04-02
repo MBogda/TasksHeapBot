@@ -1,12 +1,17 @@
 package bogdan.markov.tasksheapbot.tasksheapbot
 
 import bogdan.markov.tasksheapbot.Util.fullName
+import bogdan.markov.tasksheapbot.taskentity.TaskService
 import dev.inmo.tgbotapi.extensions.api.bot.getMe
+import dev.inmo.tgbotapi.extensions.api.delete
 import dev.inmo.tgbotapi.extensions.api.send.reply
+import dev.inmo.tgbotapi.extensions.api.send.send
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.onCommand
-import dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.onContentMessage
+import dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.onText
+import dev.inmo.tgbotapi.extensions.utils.formatting.toMarkdownV2Texts
 import dev.inmo.tgbotapi.extensions.utils.ifPrivateChat
+import dev.inmo.tgbotapi.types.message.MarkdownV2ParseMode
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.content.TextContent
 
@@ -22,9 +27,20 @@ class TasksHeapBot {
         onCommand("start") {
             startMessage(it)
         }
-        onContentMessage {
-            reply(it, "I'm working.")
+        onText {
+            println(it)
+            val description = it.content.textSources.toMarkdownV2Texts().reduce(String::plus)
+            val newTask = TaskService.createTask(it.chat.id.chatId, description)
+            delete(it)
+            send(
+                chat = it.chat,
+                text = "New task is saved! Here's the task:\n\n${newTask.descriptionPreview}",
+                parseMode = MarkdownV2ParseMode,
+            )
         }
+//        onContentMessage {
+//            reply(it, "I'm working.")
+//        }
     }
 
     private suspend fun BehaviourContext.startMessage(inputMessage: CommonMessage<TextContent>) {

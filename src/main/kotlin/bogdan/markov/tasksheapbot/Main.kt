@@ -31,7 +31,9 @@ private suspend fun startBot() {
     val bot = telegramBot(CONFIG.application.botApiToken)
     val tasksHeapBot = TasksHeapBot()
 
-    bot.buildBehaviourWithLongPolling {
+    bot.buildBehaviourWithLongPolling(defaultExceptionsHandler = {
+        it.printStackTrace()
+    }) {
         tasksHeapBot.runBot(this)
     }.join()
 }
