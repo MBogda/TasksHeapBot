@@ -2,6 +2,7 @@ package bogdan.markov.tasksheapbot.tasksheapbot
 
 import bogdan.markov.tasksheapbot.Util.fullName
 import bogdan.markov.tasksheapbot.taskentity.TaskService
+import bogdan.markov.tasksheapbot.taskentity.TaskService.textSources
 import dev.inmo.tgbotapi.extensions.api.bot.getMe
 import dev.inmo.tgbotapi.extensions.api.delete
 import dev.inmo.tgbotapi.extensions.api.send.reply
@@ -38,14 +39,11 @@ class TasksHeapBot {
 
             val answer = buildEntities() {
                 this.add(regular("New task is saved! Here's the task:\n\n"))
-                this.addAll(it.content.textSources) // todo: newTask.formattedDescriptionPreview()
+                this.addAll(newTask.textSources)    // todo: newTask.formattedDescriptionPreview()
             }
             send(
                 chat = it.chat,
-//                entities = it.content.textSources,
                 entities = answer,
-//                text = "${newTask.descriptionPreview}",
-//                parseMode = MarkdownV2ParseMode,
             )
             delete(it)
         }

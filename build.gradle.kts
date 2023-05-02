@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.8.10"
     application
+    kotlin("plugin.serialization") version "1.8.10"
 }
 
 group = "bogdan.markov"
@@ -14,6 +15,7 @@ repositories {
 
 val tgbotapiVersion: String by project
 val jacksonVersion: String by project
+val kamlVersion: String by project
 val exposedVersion: String by project
 val h2Version: String by project
 
@@ -22,9 +24,13 @@ dependencies {
 
     implementation("dev.inmo", "tgbotapi", tgbotapiVersion)
 
+    // Serialization
+    // todo: replace jackson with kotlin serialization (kaml)
     implementation("com.fasterxml.jackson.module", "jackson-module-kotlin", jacksonVersion)
     implementation("com.fasterxml.jackson.dataformat", "jackson-dataformat-yaml", jacksonVersion)
+    implementation("com.charleskorn.kaml", "kaml", kamlVersion)
 
+    // Database
     implementation("org.jetbrains.exposed", "exposed-core", exposedVersion)
     implementation("org.jetbrains.exposed", "exposed-dao", exposedVersion)
     implementation("org.jetbrains.exposed", "exposed-jdbc", exposedVersion)
