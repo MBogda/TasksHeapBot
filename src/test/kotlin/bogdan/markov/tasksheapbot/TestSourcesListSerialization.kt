@@ -17,7 +17,7 @@ import kotlin.test.assertEquals
 class TestSourcesListSerialization {
 
     @Test
-    fun testYamlSerialization() {
+    fun testYamlSerialization_NOT_WORKING() {
         // textSources=[RegularTextSource(source=Гав ), StrikethroughTextSource(source=Хрю, subsources=[RegularTextSource(source=Хрю)]), RegularTextSource(source= ), BoldTextSource(source=Мяу, subsources=[RegularTextSource(source=Мяу)])]
         val textSources: TextSourcesList = buildEntities {
             add(regular("Гав "))
@@ -41,7 +41,7 @@ class TestSourcesListSerialization {
     }
 
     @Test
-    fun testYamlSerialization2() {
+    fun testYamlSerialization2_NOT_WORKING() {
         // textSources=[RegularTextSource(source=Гав ), StrikethroughTextSource(source=Хрю, subsources=[RegularTextSource(source=Хрю)]), RegularTextSource(source= ), BoldTextSource(source=Мяу, subsources=[RegularTextSource(source=Мяу)])]
         val textSources: TextSourcesList = buildEntities {
             add(regular("Гав "))
@@ -77,7 +77,7 @@ class TestSourcesListSerialization {
     }
 
     @Test
-    fun testJsonSerialization2() {
+    fun testJsonSerialization2_NOT_WORKING() {
         // textSources=[RegularTextSource(source=Гав ), StrikethroughTextSource(source=Хрю, subsources=[RegularTextSource(source=Хрю)]), RegularTextSource(source= ), BoldTextSource(source=Мяу, subsources=[RegularTextSource(source=Мяу)])]
         val textSources: TextSourcesList = buildEntities {
             add(regular("Гав "))

@@ -39,7 +39,7 @@ class TasksHeapBot {
 
             val answer = buildEntities() {
                 this.add(regular("New task is saved! Here's the task:\n\n"))
-                this.addAll(newTask.textSources)    // todo: newTask.formattedDescriptionPreview()
+                this.addAll(newTask.textSources)    // todo: output only preview, not full message
             }
             send(
                 chat = it.chat,
