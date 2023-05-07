@@ -14,8 +14,11 @@ repositories {
 }
 
 val tgbotapiVersion: String by project
+
 val jacksonVersion: String by project
 val kamlVersion: String by project
+val kotlinxJsonVersion: String by project
+
 val exposedVersion: String by project
 val h2Version: String by project
 
@@ -29,6 +32,7 @@ dependencies {
     implementation("com.fasterxml.jackson.module", "jackson-module-kotlin", jacksonVersion)
     implementation("com.fasterxml.jackson.dataformat", "jackson-dataformat-yaml", jacksonVersion)
     implementation("com.charleskorn.kaml", "kaml", kamlVersion)
+    implementation("org.jetbrains.kotlinx", "kotlinx-serialization-json", kotlinxJsonVersion)
 
     // Database
     implementation("org.jetbrains.exposed", "exposed-core", exposedVersion)
